@@ -1,0 +1,9 @@
+footer{
+    background-color:rgb(173, 120, 222);
+    padding: 10px;
+}
+
+.textoFooter{
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

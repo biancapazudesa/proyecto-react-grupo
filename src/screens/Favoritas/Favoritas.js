@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Register(){
+function Favoritas(){
     return(
         <div>
-            <h1>Register</h1>
+            <h1>Favoritas</h1>
         </div>
     )
 }
 
-export default Register
+export default Favoritas
