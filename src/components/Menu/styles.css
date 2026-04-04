@@ -1,0 +1,30 @@
+nav .menu{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: #eee;
+    padding: 10px 15px;
+    border-radius: 6px;
+    justify-content: space-between;
+
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+}
+
+.izquierda {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.derecha {
+    justify-content: flex-end;
+    flex-direction: row;
+    display: flex;
+    width: 50%;
+}

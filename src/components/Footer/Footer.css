@@ -1,9 +1,15 @@
 footer{
-    background-color:rgb(173, 120, 222);
     padding: 10px;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
 }
 
 .textoFooter{
     text-align: center;
+    margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

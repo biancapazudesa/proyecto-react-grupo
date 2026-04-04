@@ -1,16 +1,35 @@
 .contenedorUl{
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0px;
+    margin-bottom: 50px;
 }
 
 .contenedorUl li {
     list-style: none;
-    width: 325px;
-    margin: 5px;
+    width: 24%;
 }
 
 .sectionCard{
-    margin: 150px;
+
+}
+
+.categoria{
+    padding: 17px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.categoria2{
+    padding: 17px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }

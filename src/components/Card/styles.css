@@ -1,11 +1,40 @@
 .single-card-movie{
-    width: 25%;
+    width: 100%;
 }
 
 .card-text{
-    width: 320px;
+    width: 100%;
 }
 
 .card-img-top {
-    width: 317%;    
+    width: 100%;
+}
+
+.card-title{
+    margin-top: 1.75rem;
+}
+
+.boton{
+    margin-right: 5px;
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border-color: #007bff;
+}
+
+.botonFav{
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+    padding: 6px 6px 7px 5px;
+}
+
+.mostrar{
+    display: block;
+}
+
+.ocultar{
+    display: none;
 }
