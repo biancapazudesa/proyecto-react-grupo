@@ -1,0 +1,16 @@
+.contenedorUl{
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contenedorUl li {
+    list-style: none;
+    width: 325px;
+    margin: 5px;
+}
+
+.sectionCard{
+    margin: 150px;
+}

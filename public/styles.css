@@ -1,0 +1,8 @@
+.sectionCard{
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 150px;
+}
