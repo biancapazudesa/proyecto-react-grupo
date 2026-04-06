@@ -7,6 +7,7 @@ import Login from './screens/Login/Login'
 import Register from './screens/Register/Register'
 import { Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
+import Detalles from './screens/Detalles/Detalles'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route path='/' exact={true} component={Home} />
           <Route path='/Peliculas' component={Peliculas} />
+          <Route path='/Detalles/:type/:id' component={Detalles} />
           <Route path='/Series' component={Series} />
           <Route path='/Favoritas' component={Favoritas} />
           <Route path='/Login' component={Login} />

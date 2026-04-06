@@ -1,7 +1,7 @@
 import React from 'react'
 
-function FormularioLogin(){
-    return(
+function FormularioLogin() {
+    return (
         <div>
             <h1>Login</h1>
         </div>

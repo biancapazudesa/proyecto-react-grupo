@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
 
-
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -11,8 +10,8 @@ class Home extends Component {
             seriesPopulares: [],
             seriesCartel: []
         }
-
     }
+
     componentDidMount() {
         fetch("https://api.themoviedb.org/3/movie/popular?api_key=34bbb0b5f876dc4dae13f205c0163fd0")
             .then(response => response.json())
@@ -51,17 +50,18 @@ class Home extends Component {
                 {this.state.populares.length === 0 ?
                     <h3>Cargando...</h3> :
                     <ul className="contenedorUl">
-                        {this.state.populares.filter((pelicula, i) => i < 4).map((pelicula) => (
-                            <li><Card
-                                key={pelicula.id}
+                        {this.state.populares.filter((pelicula, i) => i < 4).map((pelicula, idx) => (
+                            <li key={pelicula.title +idx}><Card
                                 titulo={pelicula.title}
                                 img={pelicula.poster_path}
-                                desc={pelicula.overview} /></li>
+                                desc={pelicula.overview}
+                                id={pelicula.id}
+                                type="movie" /></li>
                         )
-
                         )}
                     </ul>
                 }
+
                 <h1 className="categoria">Películas en cartel</h1>
                 {this.state.cartel.length === 0 ?
                     <h3>Cargando...</h3> :
@@ -71,9 +71,10 @@ class Home extends Component {
                                 key={pelicula.id}
                                 titulo={pelicula.title}
                                 img={pelicula.poster_path}
-                                desc={pelicula.overview} /></li>
+                                desc={pelicula.overview}
+                                id={pelicula.id}
+                                type="movie" /></li>
                         )
-
                         )}
                     </ul>
                 }
@@ -87,12 +88,14 @@ class Home extends Component {
                                 key={serie.id}
                                 titulo={serie.name}
                                 img={serie.poster_path}
-                                desc={serie.overview} /></li>
+                                desc={serie.overview}
+                                id={serie.id}
+                                type="tv" /></li>
                         )
-
                         )}
                     </ul>
                 }
+
                 <h1 className="categoria2">Series en cartel</h1>
                 {this.state.seriesCartel.length === 0 ?
                     <h3>Cargando...</h3> :
@@ -102,13 +105,13 @@ class Home extends Component {
                                 key={serie.id}
                                 titulo={serie.name}
                                 img={serie.poster_path}
-                                desc={serie.overview} /></li>
+                                desc={serie.overview}
+                                id={serie.id}
+                                type="tv" /></li>
                         )
-
                         )}
                     </ul>
                 }
-
             </section>
         )
     }

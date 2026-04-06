@@ -1,0 +1,21 @@
+.divDetalles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.col-md-6{
+    margin-top: 15px;
+}
+
+.descDetalle{
+    margin-top: 10px;
+}
+
+.mt-0 li{
+    margin-left: 45px;
+}
+
+.mt-0{
+    padding:0px;
+}

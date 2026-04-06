@@ -39,6 +39,8 @@ class Peliculas extends Component {
                                 key={pelicula.id}
                                 titulo={pelicula.title}
                                 img={pelicula.poster_path}
+                                id={pelicula.id}
+                                type="movie"
                                 desc={pelicula.overview} /></li>
                         )
 

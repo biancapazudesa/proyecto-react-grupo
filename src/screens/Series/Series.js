@@ -24,8 +24,6 @@ class Series extends Component {
         })
     }
 
-
-
     render() {
         return (
             <div>
@@ -39,9 +37,10 @@ class Series extends Component {
                                 key={serie.id}
                                 titulo={serie.title}
                                 img={serie.poster_path}
+                                id={serie.id}
+                                type="tv"
                                 desc={serie.overview} /></li>
                         )
-
                         )}
                     </ul>
                 }
