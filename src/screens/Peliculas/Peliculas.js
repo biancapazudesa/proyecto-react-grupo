@@ -34,9 +34,8 @@ class Peliculas extends Component {
                 {this.state.movies.length === 0 ?
                     <h3>Cargando...</h3> :
                     <ul className="contenedorUl">
-                        {this.state.movies.filter((pelicula, i) => i < this.state.iterador).map((pelicula) => (
-                            <li><Card
-                                key={pelicula.id}
+                        {this.state.movies.filter((pelicula, i) => i < this.state.iterador).map((pelicula, idx) => (
+                            <li key={pelicula.title + idx}><Card
                                 titulo={pelicula.title}
                                 img={pelicula.poster_path}
                                 id={pelicula.id}

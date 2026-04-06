@@ -32,9 +32,8 @@ class Series extends Component {
                 {this.state.series.length === 0 ?
                     <h3>Cargando...</h3> :
                     <ul className="contenedorUl">
-                        {this.state.series.filter((serie, i) => i < this.state.iterador).map((serie) => (
-                            <li><Card
-                                key={serie.id}
+                        {this.state.series.filter((serie, i) => i < this.state.iterador).map((serie, idx) => (
+                            <li key={serie.title + idx}><Card
                                 titulo={serie.title}
                                 img={serie.poster_path}
                                 id={serie.id}
