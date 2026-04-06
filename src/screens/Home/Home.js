@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
-import './styles.css'
+
 
 class Home extends Component {
     constructor(props) {

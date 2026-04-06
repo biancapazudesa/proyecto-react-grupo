@@ -38,3 +38,7 @@
 .ocultar{
     display: none;
 }
+
+.cardBody{
+    margin-bottom: 50px;
+}
