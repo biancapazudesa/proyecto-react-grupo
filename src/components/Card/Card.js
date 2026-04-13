@@ -16,20 +16,38 @@ class Card extends Component {
             verMas: this.state.verMas ? false : true
         })
     }
+    componentDidMount() {
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
 
+        if (storage !== null) {
+            let storageParseado = JSON.parse(storage)
+
+            let resultado = storageParseado.filter(idGuardado => idGuardado == this.props.id)
+
+            if (resultado.length > 0) {
+                this.setState({
+                    fav: true
+                })
+            }
+        }
+
+
+    }
     agregarFav(id) {
-        let storage = localStorage.getItem("favPeliculas")
-        
-        if(storage == null){
-            
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
+
+        if (storage == null) {
+
             let primerValor = [id]
             let primerValorString = JSON.stringify(primerValor)
-            localStorage.setItem('favPeliculas', primerValorString)
-        }else{
+            localStorage.setItem(favCate, primerValorString)
+        } else {
             let storageParseado = JSON.parse(storage)
             storageParseado.push(id)
             let storageString = JSON.stringify(storageParseado)
-            localStorage.setItem("favPeliculas", storageString)
+            localStorage.setItem(favCate, storageString)
         }
 
         this.setState({
@@ -37,12 +55,13 @@ class Card extends Component {
         })
     }
 
-    sacarFav(id){
-        let storage = localStorage.getItem("favPeliculas")
+    sacarFav(id) {
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
         let storageParseado = JSON.parse(storage)
-        let storageFiltrado = storageParseado.filter( i => i !== id)
+        let storageFiltrado = storageParseado.filter(i => i !== id)
         let storageString = JSON.stringify(storageFiltrado)
-        localStorage.setItem("favPeliculas", storageString)
+        localStorage.setItem(favCate, storageString)
 
 
         this.setState({
@@ -50,7 +69,7 @@ class Card extends Component {
         })
     }
 
-    
+
 
     render() {
         let textoBoton = "Ver más"
@@ -68,7 +87,7 @@ class Card extends Component {
                     <h5 className="card-title">{this.props.titulo}</h5>
                     <p className={this.state.verMas === true ? "card-text mostrar" : "card-text ocultar"}>{this.props.desc}</p>
                     <button onClick={() => this.info()} href="movie.html" className="boton">{textoBoton}</button>
-                    <button onClick={() => {this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id)}} className="botonFav"> {this.state.fav === true ? "♥️": "🩶"} </button>
+                    <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>
                 </div>
             </article>
         )

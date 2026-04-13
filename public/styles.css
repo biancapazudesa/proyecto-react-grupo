@@ -35,7 +35,10 @@
     width: 24%;
 }
 
-
+.single-card-movie{
+    list-style: none;
+    width: 24%;
+}
 
 .categoria{
     padding: 17px;
@@ -44,6 +47,16 @@
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
+}
+
+.fav{
+    color: black;
+    background-color: #f9becf;
+}
+
+.noFav{
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .categoria2{
