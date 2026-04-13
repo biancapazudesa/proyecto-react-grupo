@@ -8,6 +8,7 @@ import Register from './screens/Register/Register'
 import { Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Detalles from './screens/Detalles/Detalles'
+import Resultados from './screens/Resultados/Resultados'
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path='/Series' component={Series} />
           <Route path='/Favoritas' component={Favoritas} />
           <Route path='/Login' component={Login} />
-          <Route path='/Register' component={Register} />
+          <Route path='/register' component={Register} />
+          <Route path='/resultados/:tipo/:busqueda' component={Resultados} />
         </Switch>
       </div>
       <div className="divFooter"></div>

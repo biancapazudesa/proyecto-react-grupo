@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
+import Buscador from '../../components/Buscador/Buscador'
 
 class Home extends Component {
     constructor(props) {
@@ -45,74 +46,76 @@ class Home extends Component {
 
     render() {
         return (
-            <section className='sectionCard'>
-                <h1 className="categoria">Películas más populares</h1>
-                {this.state.populares.length === 0 ?
-                    <h3>Cargando...</h3> :
-                    <ul className="contenedorUl">
-                        {this.state.populares.filter((pelicula, i) => i < 4).map((pelicula, idx) => (
-                            <li key={pelicula.title +idx}><Card
-                                titulo={pelicula.title}
-                                img={pelicula.poster_path}
-                                desc={pelicula.overview}
-                                id={pelicula.id}
-                                type="movie" /></li>
-                        )
-                        )}
-                    </ul>
-                }
+            <>
+                <Buscador />
+                <section className='sectionCard'>
+                    <h1 className="categoria">Películas más populares</h1>
+                    {this.state.populares.length === 0 ?
+                        <h3>Cargando...</h3> :
+                        <ul className="contenedorUl">
+                            {this.state.populares.filter((pelicula, i) => i < 4).map((pelicula, idx) => (
+                                <li key={pelicula.title + idx}><Card
+                                    titulo={pelicula.title}
+                                    img={pelicula.poster_path}
+                                    desc={pelicula.overview}
+                                    id={pelicula.id}
+                                    type="movie" /></li>
+                            )
+                            )}
+                        </ul>
+                    }
 
-                <h1 className="categoria">Películas en cartel</h1>
-                {this.state.cartel.length === 0 ?
-                    <h3>Cargando...</h3> :
-                    <ul className="contenedorUl">
-                        {this.state.cartel.filter((pelicula, i) => i < 4).map((pelicula) => (
-                            <li><Card
-                                key={pelicula.id}
-                                titulo={pelicula.title}
-                                img={pelicula.poster_path}
-                                desc={pelicula.overview}
-                                id={pelicula.id}
-                                type="movie" /></li>
-                        )
-                        )}
-                    </ul>
-                }
+                    <h1 className="categoria">Películas en cartel</h1>
+                    {this.state.cartel.length === 0 ?
+                        <h3>Cargando...</h3> :
+                        <ul className="contenedorUl">
+                            {this.state.cartel.filter((pelicula, i) => i < 4).map((pelicula) => (
+                                <li><Card
+                                    key={pelicula.id}
+                                    titulo={pelicula.title}
+                                    img={pelicula.poster_path}
+                                    desc={pelicula.overview}
+                                    id={pelicula.id}
+                                    type="movie" /></li>
+                            )
+                            )}
+                        </ul>
+                    }
 
-                <h1 className="categoria2">Series mas populares</h1>
-                {this.state.seriesPopulares.length === 0 ?
-                    <h3>Cargando...</h3> :
-                    <ul className="contenedorUl">
-                        {this.state.seriesPopulares.filter((serie, i) => i < 4).map((serie) => (
-                            <li><Card
-                                key={serie.id}
-                                titulo={serie.name}
-                                img={serie.poster_path}
-                                desc={serie.overview}
-                                id={serie.id}
-                                type="tv" /></li>
-                        )
-                        )}
-                    </ul>
-                }
+                    <h1 className="categoria2">Series mas populares</h1>
+                    {this.state.seriesPopulares.length === 0 ?
+                        <h3>Cargando...</h3> :
+                        <ul className="contenedorUl">
+                            {this.state.seriesPopulares.filter((serie, i) => i < 4).map((serie) => (
+                                <li><Card
+                                    key={serie.id}
+                                    titulo={serie.name}
+                                    img={serie.poster_path}
+                                    desc={serie.overview}
+                                    id={serie.id}
+                                    type="tv" /></li>
+                            )
+                            )}
+                        </ul>
+                    }
 
-                <h1 className="categoria2">Series en cartel</h1>
-                {this.state.seriesCartel.length === 0 ?
-                    <h3>Cargando...</h3> :
-                    <ul className="contenedorUl">
-                        {this.state.seriesCartel.filter((serie, i) => i < 4).map((serie) => (
-                            <li><Card
-                                key={serie.id}
-                                titulo={serie.name}
-                                img={serie.poster_path}
-                                desc={serie.overview}
-                                id={serie.id}
-                                type="tv" /></li>
-                        )
-                        )}
-                    </ul>
-                }
-            </section>
+                    <h1 className="categoria2">Series en cartel</h1>
+                    {this.state.seriesCartel.length === 0 ?
+                        <h3>Cargando...</h3> :
+                        <ul className="contenedorUl">
+                            {this.state.seriesCartel.filter((serie, i) => i < 4).map((serie) => (
+                                <li><Card
+                                    key={serie.id}
+                                    titulo={serie.name}
+                                    img={serie.poster_path}
+                                    desc={serie.overview}
+                                    id={serie.id}
+                                    type="tv" /></li>
+                            )
+                            )}
+                        </ul>
+                    }
+                </section></>
         )
     }
 }

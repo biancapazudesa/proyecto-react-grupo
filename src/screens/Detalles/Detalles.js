@@ -6,6 +6,7 @@ class Detalles extends Component {
         super(props)
         this.state = {
             detalles: [],
+            fav: false,
             id: this.props.match.params.id,
             type: this.props.match.params.type
         }
@@ -14,13 +15,70 @@ class Detalles extends Component {
     componentDidMount() {
         fetch(`https://api.themoviedb.org/3/${this.state.type}/${this.state.id}?api_key=34bbb0b5f876dc4dae13f205c0163fd0`)
             .then(response => response.json())
-            .then(data => this.setState(
+            .then(data => {
+                console.log(data);
+                
+                this.setState(
                 { detalles: data }
-            ))
+            )})
             .catch(error => console.log(error))
+
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
+
+        if (storage !== null) {
+            let storageParseado = JSON.parse(storage)
+
+            let resultado = storageParseado.filter(idGuardado => idGuardado == this.props.id)
+
+            if (resultado.length > 0) {
+                this.setState({
+                    fav: true
+                })
+            }
+        }
+    }
+
+    agregarFav(id) {
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
+
+        if (storage == null) {
+
+            let primerValor = [id]
+            let primerValorString = JSON.stringify(primerValor)
+            localStorage.setItem(favCate, primerValorString)
+        } else {
+            let storageParseado = JSON.parse(storage)
+            storageParseado.push(id)
+            let storageString = JSON.stringify(storageParseado)
+            localStorage.setItem(favCate, storageString)
+        }
+
+        this.setState({
+            fav: true
+        })
+    }
+
+    sacarFav(id) {
+        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let storage = localStorage.getItem(favCate)
+        let storageParseado = JSON.parse(storage)
+        let storageFiltrado = storageParseado.filter(i => i !== id)
+        let storageString = JSON.stringify(storageFiltrado)
+        localStorage.setItem(favCate, storageString)
+
+
+        this.setState({
+            fav: false
+        })
     }
 
     render() {
+
+        console.log(this.state.detalles);
+        
+
         return (
             <div>
                 <h1 className='categoria'>{this.state.detalles.title || this.state.detalles.name}</h1>
@@ -34,9 +92,11 @@ class Detalles extends Component {
                                 <p className="description">{this.state.detalles.overview} </p>
                                 <p className="mt-0 mb-0" id="release-date"><strong>Fecha de estreno:</strong> {this.state.detalles.first_air_date || this.state.detalles.release_date} </p>
                                 {this.state.type === "movie" ? <p className="mt-0 mb-0 length"><strong>Duración: </strong> {this.state.detalles.runtime} </p> : null}
-                                <ul className="mt-0 mb-0"><strong className='textoGenero'>Género:</strong> {this.state.detalles.genres.map((g, idx) => <li key={idx}>{g.name}</li>)}</ul>
+                                <ul className="mt-0 mb-0"><strong className='textoGenero'>Género:</strong>
+                                    {this.state.detalles.genres.map((g, idx) => <li key={idx}>{g.name}</li>)}
+                                </ul>
                                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.detalles.vote_average}</p>
-                                <button href="" className="botonFav">🩶</button>
+                                <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>
 
                             </section>
                         </div>}

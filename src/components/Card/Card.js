@@ -72,6 +72,10 @@ class Card extends Component {
 
 
     render() {
+
+        console.log(this.props);
+        
+
         let textoBoton = "Ver más"
 
         if (this.state.verMas === true) {

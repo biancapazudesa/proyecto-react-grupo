@@ -17,7 +17,6 @@ class Favoritas extends Component {
             let ids = JSON.parse(storage)
 
             let peliculas = []
-
             ids.map((id) =>
                 fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=34bbb0b5f876dc4dae13f205c0163fd0`)
                     .then(res => res.json())
@@ -61,7 +60,7 @@ class Favoritas extends Component {
 
                 <h2 className="nombreCategoriaFav">Películas</h2>
                 {this.state.peliculasRecuperadas.length === 0 ? (
-                    <h3 className="noFav"><strong>No tenés favoritos</strong></h3>
+                    <h3 className="noFav"><strong>No tenés películas favoritas</strong></h3>
                 ) : (
                     <ul className="contenedorUl">{this.state.peliculasRecuperadas.map((pelicula, idx) => (
                         <li key={idx + pelicula.title}><Card
@@ -76,7 +75,7 @@ class Favoritas extends Component {
 
                 <h2 className="nombreCategoriaFav">Series</h2>
                 {this.state.seriesRecuperadas.length === 0 ? (
-                    <p>No tenés series favoritas</p>
+                    <h3 className="noFav"><strong>No tenés series favoritas</strong></h3>
                 ) : (
                     <ul className="contenedorUl">
                         {this.state.seriesRecuperadas.map((serie, idx) => (
