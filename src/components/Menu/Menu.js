@@ -20,8 +20,8 @@ class Menu extends Component {
                 </div>
 
                 <div className="derecha">
-                    <Link to='/Login'>Iniciar sesión</Link>
-                    <Link to='/Register'>Registrarse</Link>
+                    <Link to='/Login' className='linkDos'>Iniciar sesión</Link>
+                    <Link to='/Register' className='linkDos'>Registrarse</Link>
                 </div>
             </nav>)
     }

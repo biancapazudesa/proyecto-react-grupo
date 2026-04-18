@@ -28,3 +28,12 @@
 label{
     font-size: 18px;
 }
+
+@media(max-width: 430px) {
+    .barra {
+        width: 79%;
+    }
+    .opciones{
+        padding-right: 0px;
+    }
+}

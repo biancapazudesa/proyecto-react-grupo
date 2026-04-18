@@ -69,3 +69,18 @@
     border-color: #ffeeba;
     margin-top: 10px;
 }
+
+@media(max-width: 430px) {
+    .divBody{
+        margin: 20px;
+    }
+    .categoria{
+        font-size: 33px;
+    }
+    .categoria2{
+        font-size: 33px;
+    }
+    .contenedorUl li{
+        width: 48%;
+    }
+}
