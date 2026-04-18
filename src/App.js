@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Detalles from './screens/Detalles/Detalles'
 import Resultados from './screens/Resultados/Resultados'
+import NotFound from './screens/NotFound/NotFound'
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/resultados/:tipo/:busqueda' component={Resultados} />
+          <Route path='' component={NotFound} />
+
         </Switch>
       </div>
       <div className="divFooter"></div>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 class Login extends Component {
     constructor(props) {
@@ -36,6 +38,10 @@ class Login extends Component {
         } else {
             let usuarioString = JSON.stringify([usuarioACrear])
             localStorage.setItem("usuarios", usuarioString)
+        }
+
+        if (usuarioACrear) {
+            cookies.set('user-auth-cookie', usuarioACrear.email)
         }
 
         this.props.history.push(

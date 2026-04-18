@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './styles.css'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 class Detalles extends Component {
     constructor(props) {
@@ -96,7 +98,7 @@ class Detalles extends Component {
                                     {this.state.detalles.genres.map((g, idx) => <li key={idx}>{g.name}</li>)}
                                 </ul>
                                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.detalles.vote_average}</p>
-                                <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>
+                                {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>}
 
                             </section>
                         </div>}

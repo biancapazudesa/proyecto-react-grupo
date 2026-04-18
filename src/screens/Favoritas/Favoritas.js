@@ -53,7 +53,6 @@ class Favoritas extends Component {
         }
     }
     render() {
-
         return (
             <div>
                 <h1 className="categoria fav">Mis Favoritos ❤️</h1>

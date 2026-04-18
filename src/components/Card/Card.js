@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import "./styles.css"
 import { Link } from 'react-router-dom'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 class Card extends Component {
     constructor(props) {
@@ -16,6 +18,7 @@ class Card extends Component {
             verMas: this.state.verMas ? false : true
         })
     }
+
     componentDidMount() {
         let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
@@ -31,9 +34,8 @@ class Card extends Component {
                 })
             }
         }
-
-
     }
+
     agregarFav(id) {
         let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
@@ -69,12 +71,8 @@ class Card extends Component {
         })
     }
 
-
-
     render() {
-
         console.log(this.props);
-        
 
         let textoBoton = "Ver más"
 
@@ -91,7 +89,7 @@ class Card extends Component {
                     <h5 className="card-title">{this.props.titulo}</h5>
                     <p className={this.state.verMas === true ? "card-text mostrar" : "card-text ocultar"}>{this.props.desc}</p>
                     <button onClick={() => this.info()} href="movie.html" className="boton">{textoBoton}</button>
-                    <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>
+                    {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>}
                 </div>
             </article>
         )
