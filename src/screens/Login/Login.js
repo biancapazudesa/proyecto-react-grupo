@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function Login(){
-    return(
-        <div>
-            <h1>Iniciar sesion</h1>
-        </div>
-    )
+class Login extends Component {
+    contructor(props) {
+
+    }
+    render() {
+        return (
+            <></>
+        )
+    }
+
 }
-
 export default Login

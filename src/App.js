@@ -18,11 +18,11 @@ function App() {
         <Header />
         <Switch>
           <Route path='/' exact={true} component={Home} />
-          <Route path='/Peliculas' component={Peliculas} />
-          <Route path='/Detalles/:type/:id' component={Detalles} />
-          <Route path='/Series' component={Series} />
-          <Route path='/Favoritas' component={Favoritas} />
-          <Route path='/Login' component={Login} />
+          <Route path='/peliculas' component={Peliculas} />
+          <Route path='/detalles/:type/:id' component={Detalles} />
+          <Route path='/series' component={Series} />
+          <Route path='/favoritas' component={Favoritas} />
+          <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/resultados/:tipo/:busqueda' component={Resultados} />
         </Switch>
