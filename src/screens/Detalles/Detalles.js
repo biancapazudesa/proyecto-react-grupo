@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from '../../components/Header/Header'
 import './styles.css'
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
@@ -25,7 +26,7 @@ class Detalles extends Component {
             )})
             .catch(error => console.log(error))
 
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let favCate = this.state.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
 
         if (storage !== null) {
@@ -42,7 +43,7 @@ class Detalles extends Component {
     }
 
     agregarFav(id) {
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let favCate = this.state.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
 
         if (storage == null) {
@@ -63,7 +64,7 @@ class Detalles extends Component {
     }
 
     sacarFav(id) {
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+        let favCate = this.state.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
         let storageParseado = JSON.parse(storage)
         let storageFiltrado = storageParseado.filter(i => i !== id)
@@ -77,12 +78,9 @@ class Detalles extends Component {
     }
 
     render() {
-
-        console.log(this.state.detalles);
-        
-
         return (
             <div>
+                <Header />
                 <h1 className='categoria'>{this.state.detalles.title || this.state.detalles.name}</h1>
                 <section className="row">
                     {this.state.detalles.length === 0 ?

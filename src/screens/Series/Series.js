@@ -55,8 +55,8 @@ class Series extends Component {
                     <h3>Cargando...</h3> :
                     <ul className="contenedorUl">
                         {this.state.series.map((serie, idx) => (
-                            <li key={serie.title + idx}><Card
-                                titulo={serie.title}
+                            <li key={serie.name + idx}><Card
+                                titulo={serie.name}
                                 img={serie.poster_path}
                                 id={serie.id}
                                 type="tv"
