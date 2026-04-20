@@ -31,7 +31,7 @@ class Detalles extends Component {
         if (storage !== null) {
             let storageParseado = JSON.parse(storage)
 
-            let resultado = storageParseado.filter(idGuardado => idGuardado == this.props.id)
+            let resultado = storageParseado.filter(idGuardado => idGuardado == this.state.id)
 
             if (resultado.length > 0) {
                 this.setState({
@@ -98,7 +98,7 @@ class Detalles extends Component {
                                     {this.state.detalles.genres.map((g, idx) => <li key={idx}>{g.name}</li>)}
                                 </ul>
                                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.detalles.vote_average}</p>
-                                {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>}
+                                {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { this.state.fav === true ? this.sacarFav(Number(this.state.id)) : this.agregarFav(Number(this.state.id)) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>}
 
                             </section>
                         </div>}

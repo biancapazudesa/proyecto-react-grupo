@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
 import Filtro from "../../components/Filtro/Filtro"
+import Header from "../../components/Header/Header"
 
 
 class Peliculas extends Component {
@@ -48,6 +49,7 @@ class Peliculas extends Component {
     render() {
         return (
             <div>
+                <Header/>
                 <h1 className="categoria">Todas las películas</h1>
                 <Filtro filtrar={(input) => this.filtrar(input)} />
                 {this.state.movies.length === 0 ?

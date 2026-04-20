@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from "../../components/Header/Header"
 import { Link } from "react-router-dom"
 import './styles.css'
 
@@ -66,6 +67,7 @@ class Register extends Component {
     render() {
         return (
             <>
+                <Header/>
                 <h1 className="categoria">Registro</h1>
                 <form className='sectionForm' onSubmit={(e) => this.onSubmit(e)}>
                     <label>Email</label>

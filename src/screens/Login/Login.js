@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from "../../components/Header/Header"
 import { Link } from "react-router-dom"
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
@@ -60,6 +61,7 @@ class Login extends Component {
     render() {
         return (
             <>
+                <Header />
                 <h1 className="categoria">Iniciar sesión</h1>
                 <form className='sectionForm' onSubmit={(e) => this.onSubmit(e)}>
                     <label>Email</label>

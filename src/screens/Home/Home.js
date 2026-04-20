@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
 import Buscador from '../../components/Buscador/Buscador'
+import Header from "../../components/Header/Header"
 
 class Home extends Component {
     constructor(props) {
@@ -47,6 +48,7 @@ class Home extends Component {
     render() {
         return (
             <>
+                <Header />
                 <Buscador />
                 <section className='sectionCard'>
                     <h1 className="categoria">Películas más populares</h1>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
 import './styles.css'
+import Header from "../../components/Header/Header"
 
 class Favoritas extends Component {
     constructor(props) {
@@ -55,8 +56,8 @@ class Favoritas extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <h1 className="categoria fav">Mis Favoritos ❤️</h1>
-
                 <h2 className="nombreCategoriaFav">Películas</h2>
                 {this.state.peliculasRecuperadas.length === 0 ? (
                     <h3 className="noFav"><strong>No tenés películas favoritas</strong></h3>

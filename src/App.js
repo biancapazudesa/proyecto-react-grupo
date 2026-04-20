@@ -16,7 +16,6 @@ function App() {
     <div className="App">
       <div className="divBody">
         <h1 className="tituloPag">UdeSA Movies</h1>
-        <Header />
         <Switch>
           <Route path='/' exact={true} component={Home} />
           <Route path='/peliculas' component={Peliculas} />

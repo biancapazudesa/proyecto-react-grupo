@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
+import Header from "../../components/Header/Header"
 import Filtro from "../../components/Filtro/Filtro"
-
 
 class Series extends Component {
     constructor(props) {
@@ -48,6 +48,7 @@ class Series extends Component {
     render() {
         return (
             <div>
+                <Header/>
                 <h1 className="categoria2">Todas las series</h1>
                 <Filtro filtrar={(input) => this.filtrar(input)} />
                 {this.state.series.length === 0 ?

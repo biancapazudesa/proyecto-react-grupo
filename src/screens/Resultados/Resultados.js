@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from "../../components/Card/Card"
+import Header from "../../components/Header/Header"
 
 class Resultados extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Resultados extends Component {
         
         return (
             <div>
+                <Header/>
                 <h1>Resultados</h1>
                 {this.state.resultados.length === 0 ?
                     <h3>Cargando...</h3> :
