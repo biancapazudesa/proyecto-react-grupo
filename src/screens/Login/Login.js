@@ -1,24 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useState } from "react"
 import Header from "../../components/Header/Header"
 import { Link } from "react-router-dom"
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-class Login extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            email: "",
-            password: "",
-            error: false,
-        }
-    }
+function Login(props) {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState(false)
 
-    onSubmit(e) {
+    function onSubmit(e) {
         e.preventDefault()
         const usuarioACrear = {
-            email: this.state.email,
-            password: this.state.password,
+            email: email,
+            password: password,
             createdAt: Date.now()
         }
 
@@ -28,7 +24,7 @@ class Login extends Component {
             let estaElUsuario = storageParseado.filter((usuario) => usuario.email == usuarioACrear.email && usuario.password == usuarioACrear.password)
 
             if (estaElUsuario.length == 0) {
-                this.setState({ error: true })
+                setError(true)
                 return
             }
 
@@ -45,40 +41,37 @@ class Login extends Component {
             cookies.set('user-auth-cookie', usuarioACrear.email)
         }
 
-        this.props.history.push(
+        props.history.push(
             "/"
         )
     }
 
-    controlarCambios(e, campo) {
-        this.setState({
-            [campo]: e.target.value,
-            error: false
-        })
+    function controlarCambios(e, campo) {
+        setError(false)
+        if(campo === 'email'){
+            setEmail(e.target.value)
+        } else if(campo === 'password') {
+            setPassword(e.target.value)
+        }
     }
 
-
-    render() {
-        return (
-            <>
-                <Header />
-                <h1 className="categoria">Iniciar sesión</h1>
-                <form className='sectionForm' onSubmit={(e) => this.onSubmit(e)}>
-                    <label>Email</label>
-                    <input className='input' onChange={(e) => this.controlarCambios(e, "email")} placeholder="Ingrese email" name="email" type="email" />
-                    <label>Contraseña</label>
-                    <input className='input' onChange={(e) => this.controlarCambios(e, "password")} placeholder="Ingrese contraseña" name="password" type="password" />
-                    {
-                        this.state.error ? <p>Credenciales incorrectas</p> : null
-                    }
-                    <button className='botonEnviar' type="submit">Iniciar sesión</button>
-                    <p className="pCuenta">¿No tenés cuenta? <Link to="/register">Registrarse</Link></p>
-                </form>
-            </>
-        )
-    }
-
-
+    return (
+        <>
+            <Header />
+            <h1 className="categoria">Iniciar sesión</h1>
+            <form className='sectionForm' onSubmit={(e) => onSubmit(e)}>
+                <label>Email</label>
+                <input className='input' onChange={(e) => controlarCambios(e, "email")} placeholder="Ingrese email" name="email" type="email" />
+                <label>Contraseña</label>
+                <input className='input' onChange={(e) => controlarCambios(e, "password")} placeholder="Ingrese contraseña" name="password" type="password" />
+                {
+                    error ? <p>Credenciales incorrectas</p> : null
+                }
+                <button className='botonEnviar' type="submit">Iniciar sesión</button>
+                <p className="pCuenta">¿No tenés cuenta? <Link to="/register">Registrarse</Link></p>
+            </form>
+        </>
+    )
 }
 
 export default Login
