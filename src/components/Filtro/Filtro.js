@@ -1,30 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {useState} from "react"
 import "./styles.css"
 
-class Filtro extends Component{
-    contructor(props){
-        this.state = {
-            valor:""
-        }
-    }
+function Filtro (props){
+    const [valor, setValor] = useState("")
     
-    evitarSubmit(e){
+    function evitarSubmit(e){
         e.preventDefault();
     }
 
-    controlarCambios(e){
-        this.setState({
-            valor:e.target.value
-        }, () => this.props.filtrar(this.state.valor))
+    function controlarCambios(e){
+        setValor(e.target.value) 
+        props.filtrar(valor)
     }
 
+    return(
+        <form className="padre" onSubmit={(e) => evitarSubmit(e)}>
+            <input className="hijo" type="text" name="filter" id="" placeholder="Buscar dentro de la lista" onChange={(e) => controlarCambios(e)} value={props.valor}/>
+        </form>
+    )
 
-    render(){
-        return(
-            <form className="padre" onSubmit={(e) => this.evitarSubmit(e)}>
-                <input className="hijo" type="text" name="filter" id="" placeholder="Buscar dentro de la lista" onChange={(e) => this.controlarCambios(e)} value={this.props.valor}/>
-            </form>
-        )
-    }
 }
 export default Filtro
