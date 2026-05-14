@@ -1,43 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./styles.css"
+import { useState } from "react"
+import { useEffect } from "react"
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-class Card extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            verMas: false,
-            fav: false
-        }
+function Card(props) {
+    const [verMas, setVerMas] = useState(false);
+    const [fav, setFav] = useState(false);
+
+    function info() {
+        setVerMas(verMas ? false : true)
     }
 
-    info() {
-        this.setState({
-            verMas: this.state.verMas ? false : true
-        })
-    }
-
-    componentDidMount() {
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+    useEffect(() => {
+        let favCate = props.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
 
         if (storage !== null) {
             let storageParseado = JSON.parse(storage)
 
-            let resultado = storageParseado.filter(idGuardado => idGuardado == this.props.id)
+            let resultado = storageParseado.filter(idGuardado => idGuardado == props.id)
 
             if (resultado.length > 0) {
-                this.setState({
-                    fav: true
-                })
+                setFav(true)
             }
         }
-    }
+    }, [])
 
-    agregarFav(id) {
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+    function agregarFav(id) {
+        let favCate = props.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
 
         if (storage == null) {
@@ -52,13 +45,11 @@ class Card extends Component {
             localStorage.setItem(favCate, storageString)
         }
 
-        this.setState({
-            fav: true
-        })
+        setFav(true)
     }
 
-    sacarFav(id) {
-        let favCate = this.props.type == 'movie' ? "favPeliculas" : "favSeries"
+    function sacarFav(id) {
+        let favCate = props.type == 'movie' ? "favPeliculas" : "favSeries"
         let storage = localStorage.getItem(favCate)
         let storageParseado = JSON.parse(storage)
         let storageFiltrado = storageParseado.filter(i => i !== id)
@@ -66,34 +57,28 @@ class Card extends Component {
         localStorage.setItem(favCate, storageString)
 
 
-        this.setState({
-            fav: false
-        })
+        setFav(false)
     }
 
-    render() {
-        console.log(this.props);
+    let textoBoton = "Ver más"
 
-        let textoBoton = "Ver más"
-
-        if (this.state.verMas === true) {
-            textoBoton = "Ver menos"
-        }
-
-        return (
-            <article className="single-card-movie">
-                <Link to={`/Detalles/${this.props.type}/${this.props.id}`}>
-                    <img src={`https://image.tmdb.org/t/p/w500${this.props.img}`} className="card-img-top" alt="..." />
-                </ Link>
-                <div className="cardBody">
-                    <h5 className="card-title">{this.props.titulo}</h5>
-                    <p className={this.state.verMas === true ? "card-text mostrar" : "card-text ocultar"}>{this.props.desc}</p>
-                    <button onClick={() => this.info()} href="movie.html" className="boton">{textoBoton}</button>
-                    {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { this.state.fav === true ? this.sacarFav(this.props.id) : this.agregarFav(this.props.id) }} className="botonFav"> {this.state.fav === true ? "♥️" : "🩶"} </button>}
-                </div>
-            </article>
-        )
+    if (verMas === true) {
+        textoBoton = "Ver menos"
     }
+
+    return (
+        <article className="single-card-movie">
+            <Link to={`/Detalles/${props.type}/${props.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w500${props.img}`} className="card-img-top" alt="..." />
+            </ Link>
+            <div className="cardBody">
+                <h5 className="card-title">{props.titulo}</h5>
+                <p className={verMas === true ? "card-text mostrar" : "card-text ocultar"}>{props.desc}</p>
+                <button onClick={() => info()} href="movie.html" className="boton">{textoBoton}</button>
+                {cookies.get('user-auth-cookie') == null ? null : <button onClick={() => { fav === true ? sacarFav(props.id) : agregarFav(props.id) }} className="botonFav"> {fav === true ? "♥️" : "🩶"} </button>}
+            </div>
+        </article>
+    )
 }
 
 export default Card
